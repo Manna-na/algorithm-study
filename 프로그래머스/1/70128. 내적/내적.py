@@ -4,3 +4,9 @@ def solution(a, b):
     for num in list_zip:
         answer += num
     return answer
+
+
+
+# def solution(a, b):
+
+#     return sum([x*y for x, y in zip(a,b)])
