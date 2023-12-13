@@ -1,10 +1,9 @@
-str = map(str, input())
-arr = [chr(i) for i in range(97, 123)]
-answer = [-1 for _ in range(26)]
-for index, num in enumerate(str):
-    if num in arr:
-        index_num = arr.index(num)
-        if answer[index_num] == -1:
-            answer[index_num] = index
-
-print(*answer)
+import sys
+input = sys.stdin.readline
+list_str = list(input())
+list_alphabet = [chr(i) for i in range(97, 123)]
+for alphabet in list_alphabet:
+    if alphabet in list_str:
+        print(list_str.index(alphabet), end=" ")
+    else:
+        print(-1, end=" ")
