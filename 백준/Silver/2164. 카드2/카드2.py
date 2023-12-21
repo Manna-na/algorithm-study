@@ -1,9 +1,9 @@
+import sys
 from collections import deque
-
-N = int(input())
-queue = deque([i for i in range(1, N+1)])
-while len(queue)>1:
-    queue.popleft()
-    queue.append(queue.popleft())
-print(queue[0])
-
+input = sys.stdin.readline
+n = int(input())
+deck = deque(range(1, n+1))
+for _ in range(n-1):
+    deck.popleft()
+    deck.append(deck.popleft())
+print(*deck)
