@@ -1,17 +1,21 @@
+# 1단계 : 수포자 패턴 찾기
+# 2단계 : 각 패턴으로 문제를 풀 때 몇 개 맞출 수 있는지 체크
+# 3단계 : 점수가 가장 큰 수포자 찾기
+
 def solution(answers):
-    peoples = {1:[1, 2, 3, 4, 5], 2:[2, 1, 2, 3, 2, 4, 2, 5], 3: [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]}
-    dict = {1:0, 2:0, 3:0}
-    for j in range(1, 4):
-        for k in range(len(answers)):
-            ans = peoples[j][k % len(peoples[j])]
-            print(answers[k], ans)
-            if ans == answers[k]:
-                dict[j] += 1
-    sorted_dict = sorted(dict.items(), key=lambda x:x[1], reverse = True)
-    max_val = sorted_dict[0][1]
     answer = []
-    for i in sorted_dict:
-        if max_val == i[1]:         
-            answer.append(i[0])
-    
+    peoples = [[1, 2, 3, 4, 5], [2, 1, 2, 3, 2, 4, 2, 5], [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]]
+    count = [0] * 3
+
+    for i in range(len(peoples)):
+        for ans in range(len(answers)):
+            if answers[ans] == peoples[i][ans % len(peoples[i])]:
+                count[i] += 1
+    max_val=max(count)
+    for i, v in enumerate(count):
+        if v==max_val:
+            answer.append(i+1)
     return answer
+
+# print(solution([1, 2, 3, 4, 5])) # [1]
+# print(solution([1,3,2,4,2]	)) # [1,2,3]
