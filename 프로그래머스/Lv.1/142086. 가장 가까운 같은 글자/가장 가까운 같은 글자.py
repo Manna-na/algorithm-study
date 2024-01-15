@@ -1,11 +1,11 @@
 def solution(s):
-    dict = {}
     answer = []
-    for i in range(len(s)):
-        if s[i] in dict:
-            answer.append(i - dict[s[i]])
+    find_val = {}
+    for i, val in enumerate(s):
+        if val in find_val:
+            answer.append(i-find_val[val])
         else:
             answer.append(-1)
-        dict[s[i]] = i     
+        find_val[val] = i
     return answer
 
