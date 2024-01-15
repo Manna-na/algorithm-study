@@ -1,10 +1,14 @@
 def solution(s, skip, index):
-    alphabet = [chr(i) for i in range(97, 123) if chr(i) not in skip]
-
-    answer = ''
-    for char in s:
-        char_index = alphabet.index(char)
-        shifted_char = alphabet[(char_index + index) % len(alphabet)]
-        answer += shifted_char
-
-    return answer
+    result = ''
+    for i in s:
+        char_to_num = ord(i)
+        number = 0
+        while number < index:
+            char_to_num += 1
+            if char_to_num == 123:
+                char_to_num = ord("a")  
+            if chr(char_to_num) not in skip:
+                number += 1
+            
+        result += chr(char_to_num)
+    return result
