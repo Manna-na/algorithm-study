@@ -1,6 +1,5 @@
 def solution(bandage, health, attacks):
     power = health
-    attack_count = len(attacks)
     attack_idx = 0
     bandage_count = 0
     for i in range(attacks[-1][0]+1):
@@ -11,7 +10,6 @@ def solution(bandage, health, attacks):
                     power += bandage[1]
                 else:
                     power = health
-                # bandage_count += 1
             else: # 시전 시간
                 if power + bandage[1] + bandage[2] < health:
                     power += bandage[1] + bandage[2]
@@ -23,7 +21,7 @@ def solution(bandage, health, attacks):
             bandage_count = 0
             if power <= 0:
                 return -1
-            if attack_idx + 1 == attack_count:
+            if attack_idx + 1 == len(attacks):
                 return power
             attack_idx += 1
 
