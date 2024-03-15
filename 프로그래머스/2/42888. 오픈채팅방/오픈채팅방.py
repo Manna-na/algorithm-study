@@ -1,18 +1,14 @@
 def solution(record):
+    uid_nick_dict = {}
+    for r in record:
+        order = r.split()
+        if order[0] == "Enter" or order[0] == "Change":
+            uid_nick_dict[order[1]] = order[2]
     answer = []
-    uid = {}
-    for line in record:
-        cmd = line.split(" ")
-        if cmd[0] != "Leave":
-            uid[cmd[1]] = cmd[2]
-    for line in record:
-        cmd = line.split(" ")
-        if cmd[0] == "Enter":
-            answer.append("%s님이 들어왔습니다." %uid[cmd[1]])
-        elif cmd[0] == "Change":
-            pass
-        else:
-            answer.append("%s님이 나갔습니다." %uid[cmd[1]])
-    return answer
-    
+    for r in record:
+        order = r.split()
+        if order[0] == "Enter":
+            answer.append(uid_nick_dict[order[1]]+"님이 들어왔습니다.")
+        elif order[0] == "Leave":
+            answer.append(uid_nick_dict[order[1]]+"님이 나갔습니다.") 
     return answer
