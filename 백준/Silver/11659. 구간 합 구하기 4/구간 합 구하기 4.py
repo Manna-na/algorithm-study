@@ -1,12 +1,12 @@
 import sys
 input = sys.stdin.readline
+n, m  = map(int, input().split())
+array = list(map(int, input().split()))
+sum_array = [0] * (n+1)
 
-n, m = map(int, input().split())
-ls = list(map(int, input().split()))
-sum_ls = [i for i in ls]
-for i in range(1, n):
-    sum_ls[i] += sum_ls[i-1]
+for i in range(n):
+    sum_array[i+1] = sum_array[i] + array[i]
+
 for _ in range(m):
-    s, e = map(int, input().split())
-    if s-1 == 0: print(sum_ls[e-1])
-    else: print(sum_ls[e-1]-sum_ls[s-2])
+    start, end = map(int, input().split())
+    print(sum_array[end]-sum_array[start-1])
