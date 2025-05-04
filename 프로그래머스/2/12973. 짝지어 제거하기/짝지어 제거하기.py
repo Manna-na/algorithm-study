@@ -2,15 +2,11 @@
 # 2. 스택 비었는지 확인
 
 def solution(s):
-    # 10^6 -> O(NlogN)
-    s_stack = []
-    for i in s:
-        if s_stack and s_stack[-1] == i:
-            s_stack.pop()
+    stack = []
+    for i in range(len(s)):
+        if stack and s[i] == stack[-1]:
+            stack.pop()
         else:
-            s_stack.append(i)
-    if s_stack:
-        return 0
-    else:
-        return 1
+            stack.append(s[i])
+    return 1 if not stack else 0
     
